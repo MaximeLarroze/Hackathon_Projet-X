@@ -13,7 +13,7 @@ namespace ApplicationProjetX
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage (new ApplicationProjetX.MainPage());
+			MainPage = new NavigationPage (new MainPage());
 		}
 
 		protected override void OnStart ()

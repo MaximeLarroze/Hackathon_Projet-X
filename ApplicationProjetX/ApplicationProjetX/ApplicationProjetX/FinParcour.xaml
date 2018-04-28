@@ -9,7 +9,7 @@
             <Label />
             <Label Text="Durée du parcour :" />
             <Image Source="http://images.frandroid.com/wp-content/uploads/2014/05/Capture-d%E2%80%99%C3%A9cran-2014-05-19-%C3%A0-17.21.24.png" />
-            <Button Text="Passer au niveau suivant" BackgroundColor="LightGray" TextColor="Green" />
+            <Button Text="Passer au niveau suivant" Style="{StaticResource bt_gray}" TextColor="Green" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -13,6 +13,9 @@
             <Style x:Key="bt_vert" TargetType="Button">
                 <Setter Property="TextColor" Value="Green"/>
             </Style>
+            <Style x:Key="bt_orange" TargetType="Button">
+                <Setter Property="TextColor" Value="Orange"/>
+            </Style>
             <Style x:Key="bt_red" TargetType="Button">
                 <Setter Property="TextColor" Value="Red"/>
             </Style>

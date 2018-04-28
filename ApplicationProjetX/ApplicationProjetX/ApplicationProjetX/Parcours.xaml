@@ -5,8 +5,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Label HorizontalOptions="Center" x:Name="etape"></Label>
-            <WebView Source="" />
-            <Button x:Name="btnCameraClicked" Text="Take Photo" />
+            <!--<WebView Source="" />-->
+            <Button x:Name="btnCameraClicked" Style="{StaticResource bt_gray}" Text="Take Photo" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
