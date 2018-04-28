@@ -15,7 +15,7 @@ namespace ApplicationProjetX
         }
         public string getWay()
         {
-            return "https://www.google.com/maps/embed/v1/directions ? key = YOUR_API_KEY & origin =" + depart.name + "&" + arriver.name + "= Telemark + Norway";
+            return "https://www.google.com/maps/embed/v1/directions?key=AIzaSyBRwkQtd8fV-UohPFI2MVKD_6UgRQ6xlz0&origin=" + this.depart + "&destination=" + this.arriver + "&avoid=tolls|highways";
         }
     }
 }
