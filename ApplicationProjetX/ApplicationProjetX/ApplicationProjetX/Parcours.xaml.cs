@@ -54,6 +54,19 @@ namespace ApplicationProjetX
                 await DisplayAlert("Chargement", "Veuillez attendre la prochaine popup, ne quittez pas", "OK");
                 VerifyPicture(ReconnaissanceImage.MakeAnalysisRequest(file.Path).Result);
             };
+
+            var map = new Map(
+                MapSpan.FromCenterAndRadius(
+            new Position(37, -122), Distance.FromKilometers(0.3)))
+            {
+                IsShowingUser = true,
+                HeightRequest = 100,
+                WidthRequest = 960,
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
+            var stack = new StackLayout { Spacing = 0 };
+            stack.Children.Add(map);
+            Content = stack;
         }
 
         public void VerifyPicture(JObject json)
