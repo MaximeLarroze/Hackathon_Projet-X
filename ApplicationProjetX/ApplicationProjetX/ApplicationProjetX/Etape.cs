@@ -15,7 +15,7 @@ namespace ApplicationProjetX
         }
         public string getWay()
         {
-            return "https://www.google.com/maps/embed/v1/directions?key=AIzaSyBRwkQtd8fV-UohPFI2MVKD_6UgRQ6xlz0&origin=" + this.Depart + "&destination=" + this.Arriver + "&avoid=tolls|highways";
+            return "https://www.google.com/maps?key=AIzaSyBRwkQtd8fV-UohPFI2MVKD_6UgRQ6xlz0&origin=" + this.Depart.Name + "&destination=" + this.Arriver.Name + "&avoid=tolls|highways";
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json.Linq;
+using Plugin.Geolocator;
 using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace ApplicationProjetX
@@ -17,10 +18,20 @@ namespace ApplicationProjetX
         Parcour currentParcour;
         Etape currentEtape;
 
-		public Parcours ()
+        public Parcours ()
 		{
-			InitializeComponent ();
+            try
+            {
+                InitializeComponent();
+            }
+            catch(Exception e)
+            {
+                
+            }
 
+            DisplayAlert("Bienvenue", "Le but du jeu est de se rendre au pin indiqué puis de se prendre en photo devant cet endroit", "Jouer !");
+
+            MyMap.IsShowingUser = true;
             btnCameraClicked.Clicked += async (sender, args) =>
             {
                 await CrossMedia.Current.Initialize();
@@ -40,6 +51,7 @@ namespace ApplicationProjetX
                 if (file == null)
                     return;
 
+                await DisplayAlert("Chargement", "Veuillez attendre la prochaine popup, ne quittez pas", "OK");
                 VerifyPicture(ReconnaissanceImage.MakeAnalysisRequest(file.Path).Result);
             };
         }
@@ -72,10 +84,12 @@ namespace ApplicationProjetX
                 }
                 else
                 {
-                    DisplayAlert("Bravo !", "Vous passez a l'étape suivante", "OK");
+                    DisplayAlert("Bravo !", "Vous passez à l'étape suivante, rejoignez le prochain pin", "OK");
                     currentParcour.NextStep();
                     currentEtape = currentParcour.Current;
                     nbEtape.Text = "Etape " + currentParcour.Index+1;
+
+                    setMapPin();
                 }
             }
             else
@@ -90,7 +104,51 @@ namespace ApplicationProjetX
             currentParcour.Init();
             currentEtape = currentParcour.Current;
             nbEtape.Text = "Etape " + currentParcour.Index+1;
+
+            setMapPin();
         }
 
-	}
+        public async Task setMapPin()
+        {
+            if (currentEtape.Arriver.X != 0 && currentEtape.Arriver.Y != 0)
+            {
+                Position pos = new Position(currentEtape.Arriver.X, currentEtape.Arriver.Y);
+                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(
+                    new Position(pos.Latitude, pos.Longitude),
+                    Distance.FromKilometers(1)
+                    ));
+
+                var position = new Position(currentEtape.Arriver.X, currentEtape.Arriver.Y); // Latitude, Longitude
+                var pin = new Pin
+                {
+                    Type = PinType.Place,
+                    Position = position,
+                    Label = currentEtape.Arriver.Name
+                };
+                MyMap.Pins.Add(pin);
+                
+            }
+            else
+            {
+                var locator = CrossGeolocator.Current;
+
+                var position = await locator.GetPositionAsync(TimeSpan.FromSeconds(3));
+
+                
+                MyMap.MoveToRegion(MapSpan.FromCenterAndRadius(
+                    new Position(position.Latitude, position.Longitude),
+                    Distance.FromKilometers(1)
+                    ));
+
+                Position pos = new Position(position.Latitude, position.Longitude);
+                var pin = new Pin
+                {
+                    Type = PinType.Place,
+                    Position = pos,
+                    Label = currentEtape.Arriver.Name
+                };
+                MyMap.Pins.Add(pin);
+            }
+        }
+    }
 }

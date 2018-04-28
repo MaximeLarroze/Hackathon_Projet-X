@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -52,7 +53,14 @@ namespace ApplicationProjetX.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.Forms.Forms.Init(e);
+                //Xamarin.Forms.Forms.Init(e);
+                var rendererAssemblies = new[]
+                {
+                    typeof(Xamarin.Forms.GoogleMaps.UWP.MapRenderer).GetTypeInfo().Assembly
+                };
+                Xamarin.Forms.Forms.Init(e, rendererAssemblies);
+                Xamarin.FormsMaps.Init("AoMmSRkQ1SSjKBJYF0BBovmFVuTZoTxklu2uD2-PHMghPgZA13DGlvsUrj4-cFkQ");
+
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

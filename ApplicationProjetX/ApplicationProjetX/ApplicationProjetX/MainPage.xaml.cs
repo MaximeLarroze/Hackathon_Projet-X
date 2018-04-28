@@ -17,19 +17,25 @@ namespace ApplicationProjetX
             Lieu lieu1 = new Lieu()
             {
                 Name = "ICI",
-                Tags = new List<string>() { "person"}
+                Tags = new List<string>() { "person"},
+                X = 0,
+                Y = 0
             };
 
             Lieu lieu2 = new Lieu()
             {
                 Name = "Parc Darcy",
-                Tags = new List<string>() { "person", "park" }
+                Tags = new List<string>() { "person", "park" },
+                X = 47.3244582,
+                Y = 5.0323696
             };
 
             Lieu lieu3 = new Lieu()
             {
                 Name = "Gare de Dijon",
-                Tags = new List<string>() { "person", "train", "station" }
+                Tags = new List<string>() { "person", "train", "station" },
+                X = 47.3235004,
+                Y = 5.0249542
             };
 
             Etape etape1 = new Etape()
