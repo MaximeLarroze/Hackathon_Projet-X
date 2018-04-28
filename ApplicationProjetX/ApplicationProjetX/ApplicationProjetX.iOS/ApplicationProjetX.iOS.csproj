@@ -119,13 +119,22 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>2.5.0.280555</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices">
+      <Version>27.0.0</Version>
+    </PackageReference>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ApplicationProjetX\ApplicationProjetX.csproj">
-      <Project>{993BF8D7-6A26-4C7C-8F5D-844A35BE7EF4}</Project>
+      <Project>{fa53ff9e-2123-4d68-9e00-9b1b08f05ce2}</Project>
       <Name>ApplicationProjetX</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -30,5 +30,12 @@ namespace ApplicationProjetX
 		{
 			// Handle when your app resumes
 		}
-	}
+        //public static Page GetMainPage()
+        //{
+        //    return new ContentPage
+        //    {
+        //        Content = new Map(MapSpan.FromCenterAndRadius(new Position(37, -122), Distance.FromMiles(10)))
+        //    };
+        //}
+    }
 }
