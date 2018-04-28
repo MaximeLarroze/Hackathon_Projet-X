@@ -13,5 +13,13 @@ namespace ApplicationProjetX
 		{
 			InitializeComponent();
 		}
-	}
+        public void Parc1_clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Parcours());
+        }
+        public void Parc2_clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FinParcour());
+        }
+    }
 }

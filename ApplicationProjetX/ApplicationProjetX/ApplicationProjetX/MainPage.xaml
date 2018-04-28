@@ -4,8 +4,34 @@
              xmlns:local="clr-namespace:ApplicationProjetX"
              x:Class="ApplicationProjetX.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <ListView>
+        <StackLayout>
+            <Image Source="http://jeuxdepiste.com/logo%20jeux%20de%20piste.jpg" HorizontalOptions="Center" />
+            <Label Text="Mode : FACILE" HorizontalOptions="Center" TextColor="Green" />
+            <Button Text="Aller au Parcour 1" Clicked="Parc1_clicked" TextColor="{StaticResource bt_vert}" />
+            <Button Text="Aller au Parcour 2" Clicked="Parc2_clicked" TextColor="{StaticResource bt_vert}" />
+            <Label Text="Mode : MEDIUM" HorizontalOptions="Center" TextColor="{StaticResource bt_orange}" />
+            <Button Text="Aller au Parcour 1" Clicked="Parc1_clicked"  TextColor="{StaticResource bt_orange}" />
+            <Button Text="Aller au Parcour 2" Clicked="Parc1_clicked"  TextColor="{StaticResource bt_orange}" />
+            <Label Text="Mode : HARD" HorizontalOptions="Center" TextColor="Red" />
+            <Button Text="Aller au Parcour 1" Clicked="Parc1_clicked"  TextColor="{StaticResource bt_red}" />
+            <Button Text="Aller au Parcour 2" Clicked="Parc1_clicked"  TextColor="{StaticResource bt_red}" />
+        </StackLayout>
+    </ListView>
+    <ListView x:Name="listAccueil" >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout BackgroundColor="{Binding Color}">
+                            <Image Source="{Binding Image}" WidthRequest="150" />
+                            <Label Text="{Binding Name}" VerticalOptions="End" />
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 
 </ContentPage>
