@@ -27,8 +27,13 @@ namespace ApplicationProjetX.Droid
             base.OnCreate(bundle);
             Xamarin.FormsMaps.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+<<<<<<< HEAD
             //Xamarin.FormsGoogleMaps.Init(this, bundle); // initialize for Xamarin.Forms.GoogleMaps
+=======
+            Xamarin.FormsMaps.Init(this, bundle);
+>>>>>>> ad9b5bdfcf774d6f12e60d921c8b981e595ed21f
             LoadApplication(new App());
+           
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
