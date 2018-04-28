@@ -1,32 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-<<<<<<< HEAD
              x:Class="ApplicationProjetX.Parcours"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
-=======
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             x:Class="ApplicationProjetX.Parcours">
->>>>>>> ad9b5bdfcf774d6f12e60d921c8b981e595ed21f
     <ContentPage.Content>
 
         
 
         <StackLayout>
             <Label HorizontalOptions="Center" x:Name="nbEtape"></Label>
-<<<<<<< HEAD
             <!--<WebView x:Name="map" Source="https://pornhub.fr" WidthRequest="200" HeightRequest="400"></WebView>-->
 
             <maps:Map WidthRequest="320" HeightRequest="200"
             x:Name="MyMap"
             MapType="Street"
         />
-=======
-            <maps:Map WidthRequest="320" HeightRequest="200"
-            x:Name="MyMap"
-            IsShowingUser="true"
-            MapType="Hybrid"/>
->>>>>>> ad9b5bdfcf774d6f12e60d921c8b981e595ed21f
             <Button x:Name="btnCameraClicked" Text="Take Photo" />
         </StackLayout>
     </ContentPage.Content>
