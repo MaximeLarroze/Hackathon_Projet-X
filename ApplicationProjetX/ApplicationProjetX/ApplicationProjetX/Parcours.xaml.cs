@@ -17,6 +17,7 @@ namespace ApplicationProjetX
 	{
         Parcour currentParcour;
         Etape currentEtape;
+        DateTime debut, fin;
 
         public Parcours ()
 		{
@@ -29,8 +30,9 @@ namespace ApplicationProjetX
                 
             }
 
+            
             DisplayAlert("Bienvenue", "Le but du jeu est de se rendre au pin indiqué puis de se prendre en photo devant cet endroit", "Jouer !");
-
+            debut = DateTime.Now;
             MyMap.IsShowingUser = true;
             btnCameraClicked.Clicked += async (sender, args) =>
             {
@@ -80,7 +82,11 @@ namespace ApplicationProjetX
                 if(currentParcour.Index == currentParcour.Etapes.Count - 1)
                 {
                     // page de fin
+                    fin = DateTime.Now;
                     DisplayAlert("Bravo !", "Vous avez terminé !", "OK");
+                    FinParcour page = new FinParcour();
+                    page.setResult(fin-debut);
+                    Navigation.PushAsync(page);
                 }
                 else
                 {

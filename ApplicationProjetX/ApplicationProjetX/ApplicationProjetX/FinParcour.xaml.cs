@@ -16,5 +16,15 @@ namespace ApplicationProjetX
 		{
 			InitializeComponent ();
 		}
+
+        public void setResult(TimeSpan total)
+        {
+            tps.Text = "Vous avez mis "+total.ToString();
+        }
+
+        public void btnRetourClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MainPage());
+        }
 	}
 }

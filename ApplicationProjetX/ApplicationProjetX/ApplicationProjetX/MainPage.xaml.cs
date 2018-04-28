@@ -49,6 +49,13 @@ namespace ApplicationProjetX
             {
                 Id = 1,
                 Depart = lieu2,
+                Arriver = lieu2
+            };
+
+            Etape etape3 = new Etape()
+            {
+                Id = 1,
+                Depart = lieu3,
                 Arriver = lieu3
             };
 
@@ -60,7 +67,7 @@ namespace ApplicationProjetX
 
             Parcour parcour2 = new Parcour()
             {
-                Etapes = new List<Etape>() { etape2 },
+                Etapes = new List<Etape>() { etape2, etape3 },
                 Name = "d'un parc à la gare"
             };
 
