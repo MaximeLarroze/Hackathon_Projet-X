@@ -4,9 +4,9 @@
              x:Class="ApplicationProjetX.Parcours">
     <ContentPage.Content>
         <StackLayout>
-            <Label HorizontalOptions="Center" x:Name="etape"></Label>
+            <Label HorizontalOptions="Center" x:Name="nbEtape"></Label>
             <!--<WebView Source="" />-->
-            <Button x:Name="btnCameraClicked" Style="{StaticResource bt_gray}" Text="Take Photo" />
+            <Button x:Name="btnCameraClicked" Text="Take Photo" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

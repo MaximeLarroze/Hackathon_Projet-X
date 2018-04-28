@@ -4,11 +4,13 @@ using System.Text;
 
 namespace ApplicationProjetX
 {
-    class Lieu
+    public class Lieu
     {
-        public string name { get; set; }
-        public double x { get; set; }
-        public double y { get; set; }
+        public string Name { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
+
+        public List<string> Tags { get; set; }
         public Lieu()
         {
 

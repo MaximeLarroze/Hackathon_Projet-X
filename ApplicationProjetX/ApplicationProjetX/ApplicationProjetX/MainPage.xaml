@@ -4,18 +4,25 @@
              xmlns:local="clr-namespace:ApplicationProjetX"
              x:Class="ApplicationProjetX.MainPage">
 
+
+    <StackLayout>
         <Image Source="http://jeuxdepiste.com/logo%20jeux%20de%20piste.jpg" HorizontalOptions="Center" />
-    <ListView x:Name="listAccueil">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <ViewCell.View>
-                        <Label Text="{Binding name}" VerticalOptions="Center" HorizontalOptions="Center"/>
-                    </ViewCell.View>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    
+        <ListView x:Name="listParcours" VerticalOptions="Start">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Focused="parcoursFocused">
+                                <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Commencer le parcour" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="btnValiderClicked"></Button>
+    </StackLayout>
 
 
 </ContentPage>

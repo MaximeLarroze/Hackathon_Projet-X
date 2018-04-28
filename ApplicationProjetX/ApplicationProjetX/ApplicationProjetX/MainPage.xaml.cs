@@ -4,22 +4,79 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace ApplicationProjetX
 {
 	public partial class MainPage : ContentPage
 	{
+        List<Parcour> parcours = new List<Parcour>();
 		public MainPage()
 		{
 			InitializeComponent();
-		}
-        public async void Parc1_clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Parcours());
+            Lieu lieu1 = new Lieu()
+            {
+                Name = "ICI",
+                Tags = new List<string>() { "person"}
+            };
+
+            Lieu lieu2 = new Lieu()
+            {
+                Name = "Parc Darcy",
+                Tags = new List<string>() { "person", "park" }
+            };
+
+            Lieu lieu3 = new Lieu()
+            {
+                Name = "Gare de Dijon",
+                Tags = new List<string>() { "person", "train", "station" }
+            };
+
+            Etape etape1 = new Etape()
+            {
+                Id = 0,
+                Depart = lieu1,
+                Arriver = lieu1
+            };
+
+            Etape etape2 = new Etape()
+            {
+                Id = 1,
+                Depart = lieu2,
+                Arriver = lieu3
+            };
+
+            Parcour parcour1 = new Parcour()
+            {
+                Etapes = new List<Etape>() { etape1},
+                Name = "ICI"
+            };
+
+            Parcour parcour2 = new Parcour()
+            {
+                Etapes = new List<Etape>() { etape2 },
+                Name = "d'un parc à la gare"
+            };
+
+            parcours.Add(parcour1);
+            parcours.Add(parcour2);
+
+            listParcours.ItemsSource = parcours;
         }
-        public async void Parc2_clicked(object sender, EventArgs e)
+
+
+        public void parcoursFocused(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new FinParcour());
+            ((StackLayout)sender).BackgroundColor = Color.Blue;
         }
+
+        public void btnValiderClicked(object sender, EventArgs e)
+        {
+            Parcour selected = (Parcour)listParcours.SelectedItem;
+            Parcours page = new Parcours();
+            page.setParcour(selected);
+            Navigation.PushAsync(page);
+        }
+
     }
 }

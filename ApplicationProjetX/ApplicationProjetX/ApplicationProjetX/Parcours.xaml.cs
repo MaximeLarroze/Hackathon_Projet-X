@@ -14,6 +14,9 @@ namespace ApplicationProjetX
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Parcours : ContentPage
 	{
+        Parcour currentParcour;
+        Etape currentEtape;
+
 		public Parcours ()
 		{
 			InitializeComponent ();
@@ -43,11 +46,51 @@ namespace ApplicationProjetX
 
         public void VerifyPicture(JObject json)
         {
+            bool corresponding = true;
+
             List<string> tags = new List<string>();
-            for(int i=0; i < json["description"]["tags"].Count(); i++)
+
+            foreach(string tag in json["description"]["tags"])
             {
-                etape.Text += " | " + json["description"]["tags"][i] + " |";
+                tags.Add(tag);
+            }
+
+            foreach(string tag in currentEtape.Arriver.Tags)
+            {
+                if (!tags.Contains(tag))
+                {
+                    corresponding = false;
+                }
+            }
+
+            if (corresponding)
+            {
+                if(currentParcour.Index == currentParcour.Etapes.Count - 1)
+                {
+                    // page de fin
+                    DisplayAlert("Bravo !", "Vous avez terminé !", "OK");
+                }
+                else
+                {
+                    DisplayAlert("Bravo !", "Vous passez a l'étape suivante", "OK");
+                    currentParcour.NextStep();
+                    currentEtape = currentParcour.Current;
+                    nbEtape.Text = "Etape " + currentParcour.Index+1;
+                }
+            }
+            else
+            {
+                DisplayAlert("Attention", "L'image n'est pas valide ou une erreur s'est produite, veuillez réesayer", "OK");
             }
         }
+
+        public void setParcour(Parcour parcour)
+        {
+            currentParcour = parcour;
+            currentParcour.Init();
+            currentEtape = currentParcour.Current;
+            nbEtape.Text = "Etape " + currentParcour.Index+1;
+        }
+
 	}
 }
